@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020, NVIDIA CORPORATION. All rights reserved.
+// Copyright (c) 2019-2021, NVIDIA CORPORATION. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
@@ -298,6 +298,10 @@ class BackendInputCollector {
   // Pinned memories that need to live over the lifetime of this
   // BackendResponder object.
   std::list<std::unique_ptr<AllocatedMemory>> pinned_memories_;
+
+  std::vector<std::unique_ptr<std::vector<int8_t*>>> input_ptr_buffer_host_;
+  std::vector<std::unique_ptr<std::vector<size_t>>> byte_size_buffer_host_;
+  std::vector<std::unique_ptr<std::vector<size_t>>> byte_size_offset_buffer_host_;
 
   // Pinned memory buffers and the corresponding request_inputs where
   // the final copy to the tensor is deferred until Finalize() after
