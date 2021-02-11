@@ -866,7 +866,9 @@ if __name__ == '__main__':
         '--target-platform',
         required=False,
         default=None,
-        help='Platform to build for. Can be "ubuntu", "windows" or "jetpack". If not specified, auto-detect the same.')
+        help=
+        'Target Platform, can be "ubuntu", "windows" or "jetpack". If not specified, auto-detect the same.'
+    )
 
     parser.add_argument('--build-id',
                         type=str,
@@ -885,6 +887,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--install-dir',
+        type=str,
         required=False,
         default=None,
         help='Install directory, default is <builddir>/opt/tritonserver.')
@@ -892,9 +895,11 @@ if __name__ == '__main__':
                         type=str,
                         required=True,
                         help='CMake directory. Folder for CMakeLists.txt.')
-    parser.add_argument('--library-paths',
+    parser.add_argument(
+        '--library-paths',
         action='append',
         required=False,
+        default=None,
         help=
         'Include specified library paths for respective backends in build as <backend-name>[:<library_path>].'
     )
